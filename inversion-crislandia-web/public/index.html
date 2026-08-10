@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mercado Privado</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <section id="loginView" class="login-shell">
+    <div class="login-card">
+      <div class="eyebrow">MERCADO PRIVADO</div>
+      <h1>Bolsa simulada</h1>
+      <p class="muted">Acceso reservado a usuarios autorizados.</p>
+      <form id="loginForm">
+        <label>Usuario
+          <input id="loginUsername" autocomplete="username" required>
+        </label>
+        <label>Contraseña
+          <input id="loginPassword" type="password" autocomplete="current-password" required>
+        </label>
+        <button class="primary" type="submit">Entrar</button>
+        <p id="loginError" class="error"></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="appView" class="hidden">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">MERCADO PRIVADO</div>
+        <h1>Panel de inversión</h1>
+      </div>
+      <div class="top-actions">
+        <span id="userLabel" class="user-label"></span>
+        <button id="adminButton" class="secondary hidden">Administración</button>
+        <button id="logoutButton" class="secondary">Salir</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span>Dinero disponible</span>
+          <strong id="cashValue">0,00 €</strong>
+        </article>
+        <article class="stat-card">
+          <span>Valor de acciones</span>
+          <strong id="stockValue">0,00 €</strong>
+        </article>
+        <article class="stat-card">
+          <span>Patrimonio total</span>
+          <strong id="netWorthValue">0,00 €</strong>
+        </article>
+      </section>
+
+      <section id="companies" class="companies-grid"></section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Tu cartera</h2>
+          <span class="muted">Valorado al precio actual</span>
+        </div>
+        <div id="portfolioTable"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Actividad del mercado</h2>
+          <span id="marketTime" class="muted"></span>
+        </div>
+        <p class="muted">El mercado se actualiza en el servidor. Los precios son simulados y no representan valores reales.</p>
+      </section>
+    </main>
+  </section>
+
+  <section id="adminView" class="hidden">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">ADMINISTRACIÓN</div>
+        <h1>Control del mercado</h1>
+      </div>
+      <button id="closeAdminButton" class="secondary">Volver al mercado</button>
+    </header>
+
+    <main class="container admin-grid">
+      <section class="panel">
+        <div class="panel-head"><h2>Crear usuario</h2></div>
+        <form id="createUserForm" class="admin-form">
+          <label>Usuario <input id="newUsername" required minlength="3" maxlength="32"></label>
+          <label>Contraseña <input id="newPassword" type="password" required minlength="10"></label>
+          <label>Dinero inicial (€) <input id="newCash" type="number" min="0" step="0.01" value="10000"></label>
+          <label class="checkbox"><input id="newIsAdmin" type="checkbox"> Administrador</label>
+          <button class="primary" type="submit">Crear usuario</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Usuarios</h2></div>
+        <div id="usersTable"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Crear noticia</h2></div>
+        <form id="newsForm" class="admin-form">
+          <label>Empresa
+            <select id="newsCompany"></select>
+          </label>
+          <label>Título <input id="newsTitle" maxlength="100" required></label>
+          <label>Texto <textarea id="newsBody" maxlength="500" required></textarea></label>
+          <label>Impacto (-25 a +25) <input id="newsImpact" type="number" min="-25" max="25" step="0.1" value="2"></label>
+          <label>Duración (horas) <input id="newsHours" type="number" min="1" max="168" value="24"></label>
+          <button class="primary" type="submit">Publicar noticia</button>
+        </form>
+      </section>
+
+      <section class="panel danger-panel">
+        <div class="panel-head"><h2>Zona de reinicio</h2></div>
+        <p class="muted">Borra las carteras y operaciones, devuelve los precios iniciales y elimina las noticias. No borra los usuarios.</p>
+        <button id="resetMarketButton" class="danger">Reiniciar mercado</button>
+      </section>
+
+      <section class="panel wide">
+        <div class="panel-head"><h2>Últimas operaciones</h2></div>
+        <div id="tradesTable"></div>
+      </section>
+    </main>
+  </section>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
