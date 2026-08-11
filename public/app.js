@@ -437,7 +437,7 @@ async function createUser(event) {
       body: JSON.stringify({
         username: $("newUsername").value.trim(),
         password: $("newPassword").value,
-        cash: Number($("newCash").value),
+        cash: parseMoneyInput($("newCash").value),
         isAdmin: $("newIsAdmin").checked
       })
     });
