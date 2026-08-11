@@ -38,7 +38,7 @@ function number(n) {
 
 function pct(n) {
   const value = Number(n || 0);
-  return `${value >= 0 ? "+" : ""}${value.toFixed(2).replace(".", ",")}%`;
+  return `${value >= 0 ? "+" : ""}${value.toFixed(2).replace(".", "'")}%`;
 }
 
 function escapeHtml(value) {
