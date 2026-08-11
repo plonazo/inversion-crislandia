@@ -677,11 +677,10 @@ app.post("/api/admin/reset-market", requireAdmin, async (req, res) => {
   try {
     await withTransaction(async client => {
       const companies = (await client.query("SELECT id, symbol FROM companies")).rows;
-      const defaults = {
-        ACME: { price: 100, health: 72, reputation: 78, sentiment: 0, trend: 0 },
-        NEX: { price: 75, health: 61, reputation: 66, sentiment: 0, trend: 0 }
-      };
-
+     const defaults = {
+  ACME: { price: 100, health: 72, reputation: 78, sentiment: 0, trend: 0 },
+  NEX: { price: 75, health: 61, reputation: 66, sentiment: 0, trend: 0 }
+};
       for (const c of companies) {
         const d = defaults[c.symbol];
         if (!d) continue;
