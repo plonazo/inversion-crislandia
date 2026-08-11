@@ -27,9 +27,13 @@ function money(n) {
 }
 
 function number(n) {
-  return Number(n || 0).toLocaleString("es-ES", {
-    maximumFractionDigits: 2
-  });
+  const value = Number(n || 0);
+  const [integer, decimals] = value.toFixed(2).split(".");
+
+  const formattedInteger = Number(integer).toLocaleString("de-DE");
+  const trimmedDecimals = decimals.replace(/0+$/, "");
+
+  return `${formattedInteger}${trimmedDecimals ? "'" + trimmedDecimals : ""}`;
 }
 
 function pct(n) {
