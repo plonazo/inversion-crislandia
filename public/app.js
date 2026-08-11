@@ -5,11 +5,14 @@ let market = null;
 let marketTimer = null;
 
 function money(n) {
-  return Number(n || 0).toLocaleString("es-ES", {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 2
-  });
+  const value = Number(n || 0);
+  const [integer, decimals] = value.toFixed(2).split(".");
+
+  const formattedInteger = Number(integer).toLocaleString("de-DE");
+
+  const trimmedDecimals = decimals.replace(/0+$/, "");
+
+  return `${formattedInteger}${trimmedDecimals ? "'" + trimmedDecimals : ""}k`;
 }
 
 function number(n) {
