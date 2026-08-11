@@ -7,13 +7,12 @@ let marketTimer = null;
 function money(n) {
   const value = Number(n || 0);
   const [integer, decimals] = value.toFixed(2).split(".");
-
   const formattedInteger = Number(integer).toLocaleString("de-DE");
-
   const trimmedDecimals = decimals.replace(/0+$/, "");
-
   return `${formattedInteger}${trimmedDecimals ? "'" + trimmedDecimals : ""}k`;
-  function parseMoneyInput(value) {
+}
+
+function parseMoneyInput(value) {
   const text = String(value ?? "").trim();
 
   if (!text) return NaN;
@@ -23,7 +22,6 @@ function money(n) {
     .replace("'", ".");
 
   return Number(normalized);
-}
 }
 
 function number(n) {
