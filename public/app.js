@@ -13,6 +13,17 @@ function money(n) {
   const trimmedDecimals = decimals.replace(/0+$/, "");
 
   return `${formattedInteger}${trimmedDecimals ? "'" + trimmedDecimals : ""}k`;
+  function parseMoneyInput(value) {
+  const text = String(value ?? "").trim();
+
+  if (!text) return NaN;
+
+  const normalized = text
+    .replace(/\./g, "")
+    .replace("'", ".");
+
+  return Number(normalized);
+}
 }
 
 function number(n) {
