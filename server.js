@@ -130,8 +130,8 @@ async function initDatabase() {
       INSERT INTO companies
         (symbol, name, price, shares_outstanding, health, revenue, expenses, debt, reputation, growth, volatility)
       VALUES
-       ('ACME', 'ACME Corporation', 100, 1000000, 72, 12000000, 8500000, 2500000, 78, 0.055, 0.018),
-('NEX', 'NEXUS Technologies', 75, 750000, 61, 8000000, 6800000, 4200000, 66, 0.11, 0.035)
+      ('DUCAP', 'DUCAP', 100, 1000000, 72, 12000000, 8500000, 2500000, 78, 0.055, 0.018),
+      ('Kairox', 'Kairox', 75, 750000, 61, 8000000, 6800000, 4200000, 66, 0.11, 0.035)
       RETURNING id, price
     `);
     for (const c of inserted) {
