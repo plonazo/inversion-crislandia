@@ -369,6 +369,7 @@ async function simulateMarketTick() {
 
     let pctMove = fundamentalMove + demandMove + newsMove + trend * 0.10 + randomShock;
     pctMove = clamp(pctMove, -0.09, 0.09);
+    console.log("MARKET", current.symbol, "pctMove:", pctMove, "price:", current.price);
 
     let newPrice = Number(current.price) * (1 + pctMove);
     newPrice = clamp(newPrice, 0.10, 1000000);
