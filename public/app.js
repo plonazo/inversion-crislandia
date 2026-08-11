@@ -359,7 +359,9 @@ async function loadUsers() {
 
     document.querySelectorAll(".cash-btn").forEach(btn => {
       btn.addEventListener("click", async () => {
-        const amount = Number(prompt("Cantidad a añadir/restar. Usa negativo para quitar dinero:"));
+        const amount = parseMoneyInput(
+  prompt("Cantidad a añadir/restar. Usa negativo para quitar dinero:")
+);
         if (!Number.isFinite(amount)) return;
         try {
           await api(`/api/admin/users/${btn.dataset.id}/cash`, {
