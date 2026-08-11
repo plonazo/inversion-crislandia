@@ -367,7 +367,7 @@ async function simulateMarketTick() {
     const demandMove = imbalance * Number(current.volatility) * 0.95;
     const newsMove = newsPressure * Number(current.volatility) * 0.55;
 
-    const meanReversion = -Math.log(Number(current.price) / 100) * 0.002;
+    const meanReversion = -Math.log(Number(current.price) / 100) * 0.02;
 
 let pctMove =
   fundamentalMove +
