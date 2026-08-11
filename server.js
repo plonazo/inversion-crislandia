@@ -9,6 +9,7 @@ const crypto = require("crypto");
 
 const { Pool } = pg;
 const app = express();
+app.set("trust proxy", 1);
 const PORT = Number(process.env.PORT || 3000);
 
 if (!process.env.DATABASE_URL) {
