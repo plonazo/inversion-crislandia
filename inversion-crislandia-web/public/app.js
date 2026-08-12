@@ -218,7 +218,12 @@ $("companies").innerHTML = selectedCompany ? [selectedCompany].map(c => {
     const company = market.companies.find(c => c.id === id);
     drawChart(canvas, company.history);
   });
-
+document.querySelectorAll(".company-tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    selectedCompanyId = Number(btn.dataset.id);
+    renderMarket();
+  });
+});
   document.querySelectorAll(".buy-btn").forEach(btn => {
     btn.addEventListener("click", () => trade(Number(btn.dataset.id), "BUY"));
   });
