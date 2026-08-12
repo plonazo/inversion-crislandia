@@ -3,6 +3,7 @@ const $ = (id) => document.getElementById(id);
 let me = null;
 let market = null;
 let marketTimer = null;
+let selectedCompanyId = null;
 
 function money(n) {
   return Number(n || 0).toLocaleString("es-ES", {
@@ -121,6 +122,12 @@ function drawChart(canvas, history) {
 
 function renderMarket() {
   if (!market) return;
+  if (
+  selectedCompanyId === null ||
+  !market.companies.some(c => c.id === selectedCompanyId)
+) {
+  selectedCompanyId = market.companies[0]?.id ?? null;
+}
 
   $("cashValue").textContent = money(market.portfolio.cash);
   $("stockValue").textContent = money(market.portfolio.stockValue);
