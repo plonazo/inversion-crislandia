@@ -198,6 +198,12 @@ $("companies").innerHTML = selectedCompany ? [selectedCompany].map(c => {
     `;
   }).join("");
 
+  document.querySelectorAll(".company-tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    selectedCompanyId = Number(btn.dataset.id);
+    renderMarket();
+  });
+});
   for (const c of market.companies) {
     const input = $(`shares-${c.id}`);
     const estimate = $(`estimate-${c.id}`);
