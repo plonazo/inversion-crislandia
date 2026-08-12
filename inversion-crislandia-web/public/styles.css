@@ -133,9 +133,34 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .stat-card span { display: block; color: var(--muted); font-size: 13px; }
 .stat-card strong { display: block; margin-top: 6px; font-size: 25px; }
 
+.company-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  overflow-x: auto;
+}
+
+.company-tab {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 11px 18px;
+  border-radius: 10px;
+}
+
+.company-tab:hover {
+  color: #fff;
+}
+
+.company-tab.active {
+  background: var(--panel-2);
+  color: #fff;
+  border-color: var(--accent);
+}
+
 .companies-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   margin-bottom: 20px;
 }
