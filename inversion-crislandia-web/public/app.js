@@ -134,7 +134,18 @@ function renderMarket() {
   $("netWorthValue").textContent = money(market.portfolio.netWorth);
   $("marketTime").textContent = `Servidor: ${new Date(market.serverTime).toLocaleTimeString("es-ES")}`;
 
-  $("companies").innerHTML = market.companies.map(c => {
+  const selectedCompany = market.companies.find(c => c.id === selectedCompanyId);
+
+$("companyTabs").innerHTML = market.companies.map(c => `
+  <button
+    class="company-tab ${c.id === selectedCompanyId ? "active" : ""}"
+    data-id="${c.id}"
+  >
+    ${escapeHtml(c.symbol)}
+  </button>
+`).join("");
+
+$("companies").innerHTML = selectedCompany ? [selectedCompany].map(c => {
     const changeClass = c.changePct >= 0 ? "up" : "down";
     const newsHtml = c.news.length
       ? c.news.map(n => `
